@@ -44,7 +44,14 @@ else {
 # QGlViewer
 QT += xml opengl
 INCLUDEPATH += QGLViewer QGLWidget
-LIBS += -lQGlViewer2
+unix {
+    LIBS += -lQGLViewer
+} else {
+    LIBS += -lQGlViewer2
+}
+unix:!macx {
+    LIBS += -lGLU
+}
 HEADER +=  visu3D/Point3D.h visu3D/Line3D.h visu3D/Arc3D.h visu3D/Tools3D.h  visu3D/Box3D.h
 SOURCES += visu3D/Point3D.cpp visu3D/Line3D.cpp visu3D/Arc3D.cpp visu3D/Tools3D.cpp visu3D/Box3D.cpp
 
